@@ -8,7 +8,7 @@ import { NgxFormValidationsErrorComponent } from "./ngx-form-validations-error.c
 })
 export class NgxFormValidationsValidateComponent implements AfterContentInit {
 
-    @Input() private control: AbstractControl;
+    @Input() control: AbstractControl;
     @ContentChild(NgxFormValidationsErrorComponent) private autoError: NgxFormValidationsErrorComponent;
     @ContentChild('ngxFvName') private labelName: ElementRef;
     @ContentChild('nfxFvFormControl') private formControlInput: ElementRef;

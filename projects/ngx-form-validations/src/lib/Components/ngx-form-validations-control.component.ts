@@ -8,7 +8,7 @@ import { NgxFormValidationsValidateComponent } from "./ngx-form-validations-vali
 })
 export class NgxFormValidationsControlComponent implements AfterContentInit {
 
-    @Input() private ngxFvControl: FormGroupDirective;
+    @Input() ngxFvControl: FormGroupDirective;
     @ContentChild(NgxFormValidationsValidateComponent) private autoValidateComponent: NgxFormValidationsValidateComponent;
 
     constructor() {
