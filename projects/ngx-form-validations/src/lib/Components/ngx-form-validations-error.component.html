@@ -1,0 +1,5 @@
+<ng-container *ngIf="form.submitted || control.dirty">
+    <div class="text-danger" *ngFor="let error of convertObjectToArray(control.errors)">
+        {{ getErrorMessage(error) }}
+    </div>
+</ng-container>
