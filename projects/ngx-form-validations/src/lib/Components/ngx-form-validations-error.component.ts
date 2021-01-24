@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, Renderer2 } from "@angular/core";
 import { AbstractControl, FormGroupDirective } from "@angular/forms";
 import { INgxFormValidationsError } from "../Models/ngx-form-validations-error.model";
 import { NgxFormValidationsService } from "../Services/ngx-form-validations.service";
@@ -10,18 +10,33 @@ import { NgxFormValidationsService } from "../Services/ngx-form-validations.serv
 })
 export class NgxFormValidationsErrorComponent {
 
-    private control: AbstractControl;
+    control: AbstractControl;
     private labelName: string;
-    private form: FormGroupDirective;
-
-    constructor(private autoValidateService: NgxFormValidationsService) {
+    form: FormGroupDirective;
+    private formControlInput: ElementRef;
+    
+    constructor(private autoValidateService: NgxFormValidationsService,
+        private renderer: Renderer2) {
         
     }
 
     convertObjectToArray(obj: { [x: string]: any; }): INgxFormValidationsError[]{
         if(obj)
+        {
+            if(this.formControlInput){
+                this.renderer.addClass(this.formControlInput.nativeElement, 'is-invalid');
+                this.renderer.removeClass(this.formControlInput.nativeElement, 'is-valid');
+            }
+
             return Object.keys(obj).map(key => ({type: key, value: obj[key]}))
+        }
         
+        if(this.formControlInput)
+        {
+            this.renderer.removeClass(this.formControlInput.nativeElement, 'is-invalid');
+            this.renderer.addClass(this.formControlInput.nativeElement, 'is-valid');
+        }
+
         return [];
     }
 
@@ -29,9 +44,10 @@ export class NgxFormValidationsErrorComponent {
         return this.autoValidateService.getErrorMessage(error, this.labelName);
     }
 
-    init(form: FormGroupDirective, control: AbstractControl, labelName: string) {
+    init(form: FormGroupDirective, control: AbstractControl, labelName: string, formControlInput: ElementRef) {
         this.control = control;
         this.labelName = labelName;       
         this.form = form;
+        this.formControlInput = formControlInput;
     }
 }

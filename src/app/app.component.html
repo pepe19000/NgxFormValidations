@@ -1,4 +1,4 @@
-<form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm)" #fd="ngForm" [ngxFvControl]="fd"> 
+<!-- <form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm)" #fd="ngForm" [ngxFvControl]="fd"> 
     <ngx-fv-validate [control]="testForm.controls.name">
         <mat-form-field>
             <mat-label #ngxFvName>
@@ -13,17 +13,17 @@
      <div>
         <button class="button" type="submit">Save</button>
     </div>
-</form>
+</form> -->
 
-<!-- <form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm)" #fd="ngForm" [ngxFvControl]="fd"> 
+<form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm)" #fd="ngForm" [ngxFvControl]="fd"> 
     <ngx-fv-validate [control]="testForm.controls.name">
         <label #ngxFvName>
             Name
         </label>
-        <input type="text" formControlName="name">
+        <input #nfxFvFormControl type="text" class="form-control" formControlName="name">
         <ngx-fv-error></ngx-fv-error>
     </ngx-fv-validate>
     <div>
         <button class="button" type="submit">Save</button>
     </div>
-</form> -->
+</form>

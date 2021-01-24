@@ -4,6 +4,8 @@ This is an Angular module. It helps with easy validation of forms.
 
 [![npm downloads](https://img.shields.io/npm/dm/ngx-form-validations.svg)](http://npm-stat.com/charts.html?package=ngx-form-validations)
 
+Check out [the demo](https://pepe19000.github.io/Demo/)!
+
 *Note: v11.0.5 is out and supports Angular 11!*
 
 ## Install
@@ -115,6 +117,10 @@ export class AppComponent {
 
 *Note: Or without Angular Material*
 
+In case of mark input with #nfxFvFormControl then It will get a
+1. 'is-invalid' class if (Form is submitted or FormControl is dirty) and FormControl is not valid
+2. 'is-valid' class if (Form is submitted or FormControl is dirty) and FormControl is valid
+
 ```html
 <!-- Mark the form and pass FormGroupDirective for it via ngxFvControl attribute -->
 <form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm)" #fd="ngForm" [ngxFvControl]="fd"> 
@@ -124,7 +130,7 @@ export class AppComponent {
           <label #ngxFvName>
               Name
           </label>
-          <input type="text" formControlName="name">
+          <input #nfxFvFormControl type="text" formControlName="name">
           <!-- Show where you want to see the errors -->
           <ngx-fv-error></ngx-fv-error>
       </ngx-fv-validate>
@@ -211,7 +217,7 @@ import { NgxFormValidationsModule } from 'ngx-form-validations';
 export class AppModule { }
 ```
 
-If you would like to use a TranslateService or other Serivice what you have to give it to this config like a dependency you have to create a factory instead of const variable
+If you would like to use a TranslateService or other Serivice what you would like to give to this config for example a dependency, you have to create a factory instead of const variable
 
 ```ts
 import { INgxFormValidationsConfig } from "ngx-form-validations";
@@ -233,7 +239,7 @@ export function CustomNgxFormValidationsConfig(translateService: TranslateServic
 
 ```
 
-After change default config with a factory:
+After that change default config with a factory:
 
 ```ts
 @NgModule({

@@ -11,15 +11,18 @@ export class NgxFormValidationsValidateComponent implements AfterContentInit {
     @Input() private control: AbstractControl;
     @ContentChild(NgxFormValidationsErrorComponent) private autoError: NgxFormValidationsErrorComponent;
     @ContentChild('ngxFvName') private labelName: ElementRef;
+    @ContentChild('nfxFvFormControl') private formControlInput: ElementRef;
 
     constructor() {
         
     }
 
     ngAfterContentInit() {
+
     }
 
     init(form: FormGroupDirective){
-        this.autoError.init(form, this.control, this.labelName.nativeElement.innerText);
+        this.autoError.init(form, this.control, this.labelName.nativeElement.innerText, this.formControlInput);
+        console.log(this.formControlInput);
     }
 }
