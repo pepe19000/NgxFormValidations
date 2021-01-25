@@ -53,8 +53,11 @@ export class NgxFormValidationsErrorComponent {
 
         this.resetFormFunc = form.resetForm;
         form.resetForm = () => {
-            this.renderer.removeClass(this.formControlInput.nativeElement, 'is-invalid');
-            this.renderer.removeClass(this.formControlInput.nativeElement, 'is-valid');
+            if(this.formControlInput){
+                this.renderer.removeClass(this.formControlInput.nativeElement, 'is-invalid');
+                this.renderer.removeClass(this.formControlInput.nativeElement, 'is-valid');
+            }
+            
             this.resetFormFunc.apply(form, arguments);
           }
     }
