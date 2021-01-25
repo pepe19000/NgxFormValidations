@@ -14,6 +14,7 @@ export class NgxFormValidationsErrorComponent {
     private labelName: string;
     form: FormGroupDirective;
     private formControlInput: ElementRef;
+    private resetFormFunc: (value?: any) => void;
     
     constructor(private autoValidateService: NgxFormValidationsService,
         private renderer: Renderer2) {
@@ -49,5 +50,12 @@ export class NgxFormValidationsErrorComponent {
         this.labelName = labelName;       
         this.form = form;
         this.formControlInput = formControlInput;
+
+        this.resetFormFunc = form.resetForm;
+        form.resetForm = () => {
+            this.renderer.removeClass(this.formControlInput.nativeElement, 'is-invalid');
+            this.renderer.removeClass(this.formControlInput.nativeElement, 'is-valid');
+            this.resetFormFunc.apply(form, arguments);
+          }
     }
 }

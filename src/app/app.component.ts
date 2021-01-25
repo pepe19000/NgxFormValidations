@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 @Component({
   selector: 'mat-fv-root',
@@ -21,10 +21,14 @@ export class AppComponent {
   }
 
   onSubmit(form: FormGroup){
-    if (form.invalid) {
-        return;
-    }
+      if (form.invalid) {
+          return;
+      }
+      
+      //Form action
+  }
 
-    //Form action
+  resetForm(ngForm: FormGroupDirective) {
+    ngForm.resetForm();
   }
 }
