@@ -1,6 +1,6 @@
 {
   "name": "ngx-form-validations",
-  "version": "11.0.12",
+  "version": "11.0.13",
   "description": "A simple Angular form validation component avoid many unnecessary error handling html tags.",
   "author": "Péter Babják",
   "repository": {
