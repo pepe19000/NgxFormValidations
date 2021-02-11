@@ -11,7 +11,7 @@ export class NgxFormValidationsValidateComponent implements AfterContentInit {
     @Input() control: AbstractControl;
     @ContentChild(NgxFormValidationsErrorComponent) private autoError: NgxFormValidationsErrorComponent;
     @ContentChild('ngxFvName') private labelName: ElementRef;
-    @ContentChild('nfxFvFormControl') private formControlInput: ElementRef;
+    @ContentChild('ngxFvFormControl') private formControlInput: ElementRef;
 
     constructor() {
         

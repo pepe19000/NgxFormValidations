@@ -6,7 +6,7 @@ This is an Angular module. It helps with easy validation of forms.
 
 Check out [the demo](https://pepe19000.github.io/Demo/)!
 
-*Note: v11.0.16 is out and supports Angular 11!*
+*Note: v11.0.17 is out and supports Angular 11!*
 
 ## Install
 
@@ -117,7 +117,7 @@ export class AppComponent {
 
 *Note: Or without Angular Material*
 
-In case of mark input with #nfxFvFormControl then It will get a
+In case of mark input with #ngxFvFormControl then It will get a
 1. 'is-invalid' class if (Form is submitted or FormControl is dirty) and FormControl is not valid
 2. 'is-valid' class if (Form is submitted or FormControl is dirty) and FormControl is valid
 
@@ -130,7 +130,7 @@ In case of mark input with #nfxFvFormControl then It will get a
           <label #ngxFvName>
               Name
           </label>
-          <input #nfxFvFormControl type="text" formControlName="name">
+          <input #ngxFvFormControl type="text" formControlName="name">
           <!-- Show where you want to see the errors -->
           <ngx-fv-error></ngx-fv-error>
       </ngx-fv-validate>
