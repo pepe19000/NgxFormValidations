@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, Input } from "@angular/core";
+import { AfterContentInit, Component, ContentChildren, Input } from "@angular/core";
 import { FormGroupDirective } from "@angular/forms";
 import { NgxFormValidationsValidateComponent } from "./ngx-form-validations-validate.component";
 
@@ -9,13 +9,15 @@ import { NgxFormValidationsValidateComponent } from "./ngx-form-validations-vali
 export class NgxFormValidationsControlComponent implements AfterContentInit {
 
     @Input() ngxFvControl: FormGroupDirective;
-    @ContentChild(NgxFormValidationsValidateComponent) private autoValidateComponent: NgxFormValidationsValidateComponent;
+    @ContentChildren(NgxFormValidationsValidateComponent) private autoValidateComponents: NgxFormValidationsValidateComponent[];
 
     constructor() {
         
     }
 
     ngAfterContentInit() {
-        this.autoValidateComponent.init(this.ngxFvControl);
+        if(this.autoValidateComponents && this.autoValidateComponents.length > 0){
+            this.autoValidateComponents.forEach(avc => avc.init(this.ngxFvControl))
+        }
     }
 }

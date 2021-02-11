@@ -16,7 +16,8 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.testForm = this.formBuilder.group({
-        name: [null, [Validators.required, Validators.maxLength(5)]],
+        firstName: [null, [Validators.required, Validators.maxLength(5)]],
+        familyName: [null, [Validators.required, Validators.maxLength(5)]]
     });
   }
 

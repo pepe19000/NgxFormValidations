@@ -16,14 +16,21 @@
 </form> -->
 
 <form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm)" #fd="ngForm" [ngxFvControl]="fd"> 
-    <ngx-fv-validate [control]="testForm.controls.name">
+    <ngx-fv-validate [control]="testForm.controls.firstName">
         <label #ngxFvName>
-            Name
+            Fisrt name
         </label>
-        <input #nfxFvFormControl type="text" class="form-control" formControlName="name">
+        <input #nfxFvFormControl type="text" class="form-control" formControlName="firstName">
         <ngx-fv-error></ngx-fv-error>
     </ngx-fv-validate>
-    <div>
+    <ngx-fv-validate [control]="testForm.controls.familyName">
+        <label #ngxFvName>
+            Family name
+        </label>
+        <input #nfxFvFormControl type="text" class="form-control" formControlName="familyName">
+        <ngx-fv-error></ngx-fv-error>
+    </ngx-fv-validate>
+    <div class="mt-2">
         <button class="mr-1 btn btn-danger" type="button" (click)="resetForm(fd)">Reset</button>
         <button class="btn btn-primary" type="submit">Save</button>
     </div>
