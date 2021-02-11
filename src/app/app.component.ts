@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 @Component({
   selector: 'mat-fv-root',
@@ -17,8 +17,25 @@ export class AppComponent {
   ngOnInit(): void {
     this.testForm = this.formBuilder.group({
         firstName: [null, [Validators.required, Validators.maxLength(5)]],
-        familyName: [null, [Validators.required, Validators.maxLength(5)]]
+        familyName: [null, [Validators.required, Validators.maxLength(5)]],
+        checkboxes: this.formBuilder.array([]),
     });
+
+    var rolesFormGroup = this.testForm.get('checkboxes') as FormArray;
+    ["Checkbox 1", "Checkbox 2"].forEach(role => {
+        rolesFormGroup.push(this.checkboxFormGroupGenerate(role));
+    });
+  }
+
+  checkboxFormGroupGenerate(data: string): FormGroup {
+    return this.formBuilder.group({
+        name: [data],
+        checked: [false, Validators.requiredTrue]
+    });
+  }
+
+  get formCheckboxDataArray() { 
+    return <FormArray>this.testForm.get('checkboxes'); 
   }
 
   onSubmit(form: FormGroup){

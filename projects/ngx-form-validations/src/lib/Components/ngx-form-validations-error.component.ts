@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2 } from "@angular/core";
+import { AfterViewChecked, Component, ElementRef, Renderer2 } from "@angular/core";
 import { AbstractControl, FormGroupDirective } from "@angular/forms";
 import { INgxFormValidationsError } from "../Models/ngx-form-validations-error.model";
 import { NgxFormValidationsService } from "../Services/ngx-form-validations.service";
@@ -8,13 +8,14 @@ import { NgxFormValidationsService } from "../Services/ngx-form-validations.serv
     templateUrl: './ngx-form-validations-error.component.html',
     providers: [NgxFormValidationsService]
 })
-export class NgxFormValidationsErrorComponent {
+export class NgxFormValidationsErrorComponent implements AfterViewChecked {
 
     control: AbstractControl;
     private labelName: ElementRef;
     form: FormGroupDirective;
     private formControlInput: ElementRef;
     private resetFormFunc: (value?: any) => void;
+    canShow: boolean = false;
     
     constructor(private autoValidateService: NgxFormValidationsService,
         private renderer: Renderer2) {
@@ -41,6 +42,10 @@ export class NgxFormValidationsErrorComponent {
         return [];
     }
 
+    ngAfterViewChecked() {
+        this.canShow = true;
+    }
+
     getErrorMessage(error: INgxFormValidationsError): string{
         return this.autoValidateService.getErrorMessage(error, this.labelName.nativeElement.innerText);
     }
@@ -59,6 +64,6 @@ export class NgxFormValidationsErrorComponent {
             }
             
             this.resetFormFunc.apply(form, arguments);
-          }
+        }
     }
 }

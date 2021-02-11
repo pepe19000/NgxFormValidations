@@ -6,7 +6,7 @@ This is an Angular module. It helps with easy validation of forms.
 
 Check out [the demo](https://pepe19000.github.io/Demo/)!
 
-*Note: v11.0.17 is out and supports Angular 11!*
+*Note: v11.0.18 is out and supports Angular 11!*
 
 ## Install
 

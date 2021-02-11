@@ -1,4 +1,4 @@
-import { Component, AfterContentInit, Input, ContentChild, ElementRef } from "@angular/core";
+import { Component, Input, ContentChild, ElementRef } from "@angular/core";
 import { AbstractControl, FormGroupDirective } from "@angular/forms";
 import { NgxFormValidationsErrorComponent } from "./ngx-form-validations-error.component";
 
@@ -6,7 +6,7 @@ import { NgxFormValidationsErrorComponent } from "./ngx-form-validations-error.c
     selector: 'ngx-fv-validate',
     template: '<ng-content></ng-content>',
 })
-export class NgxFormValidationsValidateComponent implements AfterContentInit {
+export class NgxFormValidationsValidateComponent {
 
     @Input() control: AbstractControl;
     @ContentChild(NgxFormValidationsErrorComponent) private autoError: NgxFormValidationsErrorComponent;
@@ -16,11 +16,7 @@ export class NgxFormValidationsValidateComponent implements AfterContentInit {
     constructor() {
         
     }
-
-    ngAfterContentInit() {
-
-    }
-
+    
     init(form: FormGroupDirective){
         this.autoError.init(form, this.control, this.labelName, this.formControlInput);
     }

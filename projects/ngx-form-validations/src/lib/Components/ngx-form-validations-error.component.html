@@ -1,4 +1,4 @@
-<ng-container *ngIf="(form && form.submitted) || (control && control.dirty)">
+<ng-container *ngIf="canShow && ((form && form.submitted) || (control && control.dirty))">
     <div class="text-danger" *ngFor="let error of convertObjectToArray(control.errors)">
         {{ getErrorMessage(error) }}
     </div>
