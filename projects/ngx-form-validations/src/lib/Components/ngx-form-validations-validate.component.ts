@@ -22,6 +22,6 @@ export class NgxFormValidationsValidateComponent implements AfterContentInit {
     }
 
     init(form: FormGroupDirective){
-        this.autoError.init(form, this.control, this.labelName.nativeElement.innerText, this.formControlInput);
+        this.autoError.init(form, this.control, this.labelName, this.formControlInput);
     }
 }

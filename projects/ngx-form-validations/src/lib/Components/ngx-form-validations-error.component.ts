@@ -11,7 +11,7 @@ import { NgxFormValidationsService } from "../Services/ngx-form-validations.serv
 export class NgxFormValidationsErrorComponent {
 
     control: AbstractControl;
-    private labelName: string;
+    private labelName: ElementRef;
     form: FormGroupDirective;
     private formControlInput: ElementRef;
     private resetFormFunc: (value?: any) => void;
@@ -42,10 +42,10 @@ export class NgxFormValidationsErrorComponent {
     }
 
     getErrorMessage(error: INgxFormValidationsError): string{
-        return this.autoValidateService.getErrorMessage(error, this.labelName);
+        return this.autoValidateService.getErrorMessage(error, this.labelName.nativeElement.innerText);
     }
 
-    init(form: FormGroupDirective, control: AbstractControl, labelName: string, formControlInput: ElementRef) {
+    init(form: FormGroupDirective, control: AbstractControl, labelName: ElementRef, formControlInput: ElementRef) {
         this.control = control;
         this.labelName = labelName;       
         this.form = form;
