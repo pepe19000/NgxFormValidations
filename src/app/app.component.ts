@@ -21,15 +21,14 @@ export class AppComponent {
         checkboxes: this.formBuilder.array([]),
     });
 
-    var rolesFormGroup = this.testForm.get('checkboxes') as FormArray;
-    ["Checkbox 1", "Checkbox 2"].forEach(role => {
-        rolesFormGroup.push(this.checkboxFormGroupGenerate(role));
+    var checkboxFormArray = this.testForm.get('checkboxes') as FormArray;
+    [1, 2].forEach(item => {
+      checkboxFormArray.push(this.checkboxFormGroupGenerate());
     });
   }
 
-  checkboxFormGroupGenerate(data: string): FormGroup {
+  checkboxFormGroupGenerate(): FormGroup {
     return this.formBuilder.group({
-        name: [data],
         checked: [false, Validators.requiredTrue]
     });
   }

@@ -24,14 +24,15 @@
         </mat-form-field>
     </ngx-fv-validate>
     <div class="mt-2" formArrayName='checkboxes' *ngFor="let checkbox of formCheckboxDataArray.controls; let i = index">
-        <ngx-fv-validate [control]="checkbox.controls.checked" [labelName]='checkbox.controls.name.value'>
+        <ngx-fv-validate [control]="checkbox.controls.checked" [labelName]="'CheckBox' + i">
             <div [formGroupName]="i" class="custom-control custom-checkbox mb-3">
-                <mat-checkbox formControlName="checked" #ngxFvName>{{checkbox.controls.name.value}}</mat-checkbox>
+                <mat-checkbox formControlName="checked" #ngxFvName>{{'CheckBox' + i}}</mat-checkbox>
                 <ngx-fv-error></ngx-fv-error>
             </div>
         </ngx-fv-validate>
     </div>
      <div>
+        <button mat-raised-button color="warn" type="button" (click)="resetForm(fd)">Reset</button>
         <button mat-raised-button class="button" type="submit">Save</button>
     </div>
 </form> -->
@@ -55,7 +56,7 @@
         <ngx-fv-validate [control]="checkbox.controls.checked">
             <div [formGroupName]="i" class="custom-control custom-checkbox mb-3">
                 <input  type="checkbox" class="custom-control-input" formControlName="checked" [id]="'checkbox_' + i">
-                <label #ngxFvName class="custom-control-label" [for]="'checkbox_' + i">{{checkbox.controls.name.value}}</label>
+                <label #ngxFvName class="custom-control-label" [for]="'checkbox_' + i">{{'CheckBox' + i}}</label>
                 <ngx-fv-error></ngx-fv-error>
             </div>
         </ngx-fv-validate>
