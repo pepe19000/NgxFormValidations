@@ -1,5 +1,6 @@
 import { AfterViewChecked, Component, ElementRef, Renderer2 } from "@angular/core";
 import { AbstractControl, FormGroupDirective } from "@angular/forms";
+import { MatCheckbox } from "@angular/material/checkbox";
 import { INgxFormValidationsError } from "../Models/ngx-form-validations-error.model";
 import { NgxFormValidationsService } from "../Services/ngx-form-validations.service";
 
@@ -11,7 +12,7 @@ import { NgxFormValidationsService } from "../Services/ngx-form-validations.serv
 export class NgxFormValidationsErrorComponent implements AfterViewChecked {
 
     control: AbstractControl;
-    private labelName: ElementRef;
+    private labelName: string | ElementRef;
     form: FormGroupDirective;
     private formControlInput: ElementRef;
     private resetFormFunc: (value?: any) => void;
@@ -47,10 +48,12 @@ export class NgxFormValidationsErrorComponent implements AfterViewChecked {
     }
 
     getErrorMessage(error: INgxFormValidationsError): string{
-        return this.autoValidateService.getErrorMessage(error, this.labelName.nativeElement.innerText);
+        let labelName = this.labelName instanceof ElementRef ? (this.labelName as ElementRef).nativeElement.innerText : this.labelName;
+
+        return this.autoValidateService.getErrorMessage(error, labelName);
     }
 
-    init(form: FormGroupDirective, control: AbstractControl, labelName: ElementRef, formControlInput: ElementRef) {
+    init(form: FormGroupDirective, control: AbstractControl, labelName: string | ElementRef, formControlInput: ElementRef) {
         this.control = control;
         this.labelName = labelName;       
         this.form = form;

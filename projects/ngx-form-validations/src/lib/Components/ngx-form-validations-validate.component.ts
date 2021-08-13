@@ -9,6 +9,7 @@ import { NgxFormValidationsErrorComponent } from "./ngx-form-validations-error.c
 export class NgxFormValidationsValidateComponent {
 
     @Input() control: AbstractControl;
+    @Input("labelName") labelNameString: string;
     @ContentChild(NgxFormValidationsErrorComponent) private autoError: NgxFormValidationsErrorComponent;
     @ContentChild('ngxFvName') private labelName: ElementRef;
     @ContentChild('ngxFvFormControl') private formControlInput: ElementRef;
@@ -18,6 +19,6 @@ export class NgxFormValidationsValidateComponent {
     }
     
     init(form: FormGroupDirective){
-        this.autoError.init(form, this.control, this.labelName, this.formControlInput);
+        this.autoError.init(form, this.control, this.labelNameString || this.labelName, this.formControlInput);
     }
 }
