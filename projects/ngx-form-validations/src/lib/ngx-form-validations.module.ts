@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxFormValidationsControlComponent } from './Components/ngx-form-validations-control.component';
 import { NgxFormValidationsErrorComponent } from './Components/ngx-form-validations-error.component';
@@ -14,7 +14,7 @@ import { NgxFormValidationsConfig } from './ngx-form-validations.config';
     NgxFormValidationsControlComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
   ],
