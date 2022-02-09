@@ -6,7 +6,7 @@ This is an Angular module. It helps with easy validation of forms.
 
 Check out [the demo](https://pepe19000.github.io/Demo/menu/NgxFormValidations)!
 
-*Note: v13.0.0 is out and supports Angular 13!*
+*Note: v13.0.1 is out and supports Angular 13!*
 
 ## Install
 
@@ -115,6 +115,17 @@ export class AppComponent {
 </form>
 ```
 
+<<<<<<< HEAD
+=======
+If you would like to use input placeholder or MatCheckBox, it's recommended to mark <ngx-fv-validate> tag with 'labelName' attribute, which contains input's label name.
+
+```html
+<ngx-fv-validate [control]="testForm.controls.name" labelName='Test label name'>
+....
+</ngx-fv-validate>
+```
+
+>>>>>>> 473748403c012611e57084ec2e8441bbb7470662
 *Note: Or without Angular Material*
 
 In case of mark input with #ngxFvFormControl then It will get a
