@@ -1,0 +1,46 @@
+<!-- <form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm)" #fd="ngForm" [ngxFvControl]="fd"> 
+    <ngx-fv-validate [control]="testForm.controls.name">
+        <mat-form-field>
+            <mat-label #ngxFvName>
+                Name
+            </mat-label>
+            <input type="text" matInput formControlName="name">
+            <mat-error>
+                <ngx-fv-error></ngx-fv-error>
+            </mat-error>                  
+        </mat-form-field>
+    </ngx-fv-validate>
+     <div>
+        <button class="button" type="submit">Save</button>
+    </div>
+</form> -->
+
+<form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm)" #fd="ngForm" [ngxFvControl]="fd"> 
+    <ngx-fv-validate [control]="testForm.controls.firstName">
+        <label #ngxFvName>
+            Fisrt name
+        </label>
+        <input #ngxFvFormControl type="text" class="form-control" formControlName="firstName">
+        <ngx-fv-error></ngx-fv-error>
+    </ngx-fv-validate>
+    <ngx-fv-validate [control]="testForm.controls.familyName">
+        <label #ngxFvName>
+            Family name
+        </label>
+        <input #ngxFvFormControl type="text" class="form-control" formControlName="familyName">
+        <ngx-fv-error></ngx-fv-error>
+    </ngx-fv-validate>
+    <div class="mt-2" formArrayName='checkboxes' *ngFor="let checkbox of formCheckboxDataArray.controls; let i = index">
+        <ngx-fv-validate [control]="checkbox.controls.checked">
+            <div [formGroupName]="i" class="custom-control custom-checkbox mb-3">
+                <input #ngxFvFormControl type="checkbox" class="custom-control-input" formControlName="checked">
+                <label #ngxFvName class="custom-control-label">{{checkbox.controls.name.value}}</label>
+                <ngx-fv-error></ngx-fv-error>
+            </div>
+        </ngx-fv-validate>
+    </div>
+    <div class="mt-2">
+        <button class="mr-1 btn btn-danger" type="button" (click)="resetForm(fd)">Reset</button>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+</form>
