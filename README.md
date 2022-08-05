@@ -115,8 +115,6 @@ export class AppComponent {
 </form>
 ```
 
-<<<<<<< HEAD
-=======
 If you would like to use input placeholder or MatCheckBox, it's recommended to mark <ngx-fv-validate> tag with 'labelName' attribute, which contains input's label name.
 
 ```html
@@ -125,7 +123,6 @@ If you would like to use input placeholder or MatCheckBox, it's recommended to m
 </ngx-fv-validate>
 ```
 
->>>>>>> 473748403c012611e57084ec2e8441bbb7470662
 *Note: Or without Angular Material*
 
 In case of mark input with #ngxFvFormControl then It will get a
@@ -228,7 +225,7 @@ import { NgxFormValidationsModule } from 'ngx-form-validations';
 export class AppModule { }
 ```
 
-If you would like to use a TranslateService or other Serivice what you would like to give to this config for example a dependency, you have to create a factory instead of const variable
+If you would like to use a TranslateService or other Service what you would like to give to this config for example a dependency, you have to create a factory instead of const variable
 
 ```ts
 import { INgxFormValidationsConfig } from "ngx-form-validations";
